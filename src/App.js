@@ -17,7 +17,7 @@ function App() {
   const columns = useMemo(
     () => [
       {
-        Header: "Touro Mecânico",
+        Header: "Ranking Touro Mecânico",
         columns: [
           {
             Header: "Nome",
