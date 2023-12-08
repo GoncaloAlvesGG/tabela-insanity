@@ -5,6 +5,7 @@ body,
 html {
   height: 100%;
   margin: 0;
+  background-color: #434343;
 }
 
 /* Styling for the main container */
@@ -13,47 +14,59 @@ html {
   flex-direction: column;
   height: 100%;
   align-items: center;
+  text-align: center;
   justify-content: center;
+  background-color: #434343;
 }
 
 /* Styling for the table */
 table {
-  width: 100%;
-  height: 100%;
+  width: 90%;
   border-collapse: collapse;
+  border: 1px solid #525252;
 }
 
 td {
   text-align: center;
   vertical-align: middle;
+  color: #e7e6e6;
+  padding: 10px;
 }
 
 /* Styling for rows */
 tr {
-  background-color: #f8f8f8;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #525252;
   transition: background-color 0.3s ease;
-  font-size: 26px;
+  background-color: #434343;
 
+}
+
+/* Styling for the first three rows */
+tr.special td {
+  background-color: #3f3f3f;
+  color: #ffffff;
+  /* Adjust the color as needed */
+}
+
+/* Hover effect on rows */
+tr:hover {
+  background-color: #333;
 }
 
 /* Styling for header row */
 th {
-  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+  background: linear-gradient(to right, red, orange, yellow, rgb(0, 255, 0), blue, rgb(149, 0, 255), rgb(255, 0, 255));
   -webkit-background-clip: text;
   color: transparent;
   background-size: 200%;
   /* Added background size */
   animation: rainbowAnimation 10s linear infinite;
   padding: 10px;
-  font-size: 26px;
+  font-size: 32px;
   /* Adjust the font size as needed */
 }
 
-/* Hover effect on rows */
-tr:hover {
-  background-color: #e0e0e0;
-}
+
 
 @keyframes rainbowAnimation {
   0% {
@@ -132,4 +145,11 @@ tr:hover {
   max-width: 100%;
   margin-top: 20px;
 
+}
+
+@media screen and (max-height: 26px) {
+  table {
+    max-height: 100vh;
+    overflow-y: auto;
+  }
 }

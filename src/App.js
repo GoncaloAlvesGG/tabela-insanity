@@ -21,17 +21,17 @@ function App() {
           {
             Header: "Nome",
             accessor: "nome",
-            // Add dynamic content with styling
             Cell: ({ row }) => (
-              <span style={{ color: row.original.rowColor }}>{row.original.nome}</span>
+              <span style={{ fontSize: `${row.index < 3 ? 29 - row.index : 24}px` }}>
+                {row.original.nome}
+              </span>
             ),
           },
           {
             Header: "Resultado",
             accessor: "resultado",
-            // Add dynamic content with styling
             Cell: ({ row }) => (
-              <span style={{ fontWeight: "bold", color: row.original.rowColor }}>
+              <span style={{ fontSize: `${row.index < 3 ? 29 - row.index : 24}px`, fontWeight: "bold" }}>
                 {row.original.resultado}
               </span>
             ),
@@ -41,16 +41,6 @@ function App() {
     ],
     []
   );
-
-  // Helper function to generate random color
-  function getRandomColor() {
-    const letters = "0123456789ABCDEF";
-    let color = "#";
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  }
 
   // data state to store the TV Maze API data. Its initial value is an empty array
   const [data, setData] = useState([]);
@@ -100,8 +90,7 @@ function App() {
   useEffect(() => {
     (async () => {
       const result = await axios("https://insanity-api.onrender.com/api/fetch/TouroMecanico");
-      const dataWithColor = result.data.map(row => ({ ...row, rowColor: getRandomColor() }));
-      setData(dataWithColor);
+      setData(result.data);
     })();
   }, []);
 
