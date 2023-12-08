@@ -33,6 +33,15 @@ td {
   padding: 10px;
 }
 
+td:nth-child(2) {
+  /* Adjust the padding and text-align as needed */
+  padding-right: 50px;
+}
+
+.resultado-header {
+  padding-right: 50px;
+}
+
 /* Styling for rows */
 tr {
   border-bottom: 1px solid #525252;
@@ -152,4 +161,46 @@ th {
     max-height: 100vh;
     overflow-y: auto;
   }
+}
+
+.add-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #555;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.add-form input {
+  padding: 5px;
+  margin: 0 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  flex: 1;
+  /* Take up remaining space in the row */
+}
+
+
+.confirm-button {
+  padding: 10px 15px;
+  font-size: 16px;
+  margin: 0 10px;
+  background-color: #3498db;
+  /* Blue background color */
+  color: #fff;
+  /* Text color */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.confirm-button:hover {
+  background-color: #2980b9;
+  /* Change the background color on hover as needed */
 }

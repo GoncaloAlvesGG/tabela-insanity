@@ -8,6 +8,7 @@ import "./App.css";
 
 function App() {
 
+  const [error, setError] = useState(null);
   const [isAddFormVisible, setAddFormVisible] = useState(false);
   const [newData, setNewData] = useState({
     nome: "",
@@ -47,6 +48,12 @@ function App() {
 
   const handleAdd = async () => {
     try {
+      // Validate input
+      if (!newData.nome || !newData.resultado || isNaN(newData.resultado) || newData.resultado < 0) {
+        setError("Introduza um nome/resultado válido!");
+        return;
+      }
+
       // Make a POST request to the server with the data to be inserted
       const response = await axios.post('https://insanity-api.onrender.com/api/insert/TouroMecanico', newData);
 
@@ -55,10 +62,10 @@ function App() {
       setAddFormVisible(false); // Close the form after successful insertion
       const updatedData = [...data, response.data];
       setData(updatedData);
-
+      setError(null); // Clear any previous errors
     } catch (error) {
       console.error("Error inserting data:", error.message);
-      // Handle error as needed
+      setError("Error inserting data. Please try again."); // Set error state for display
     }
   };
 
@@ -140,6 +147,14 @@ function App() {
               <button className="confirm-button" onClick={handleAdd}>
                 Confirmar
               </button>
+            </div>
+          )}
+
+          {error && (
+            <div className="error-container">
+              <p className="error-text" style={{ color: "#e7e6e6" }}>
+                {error}
+              </p>
             </div>
           )}
         </>
