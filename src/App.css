@@ -185,6 +185,16 @@ th {
   /* Take up remaining space in the row */
 }
 
+.add-form select {
+  padding: 5px;
+  margin: 0 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  flex: 1;
+  /* Take up remaining space in the row */
+}
+
 
 .confirm-button {
   padding: 10px 15px;

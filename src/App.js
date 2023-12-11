@@ -10,6 +10,9 @@ function App() {
 
   const [error, setError] = useState(null);
   const [isAddFormVisible, setAddFormVisible] = useState(false);
+  const [tables, setTables] = useState([]);
+  const [selectedTable, setSelectedTable] = useState('');
+  const [data, setData] = useState([]);
   const [newData, setNewData] = useState({
     nome: "",
     resultado: "",
@@ -43,40 +46,38 @@ function App() {
     []
   );
 
-  // data state to store the TV Maze API data. Its initial value is an empty array
-  const [data, setData] = useState([]);
+  const fetchData = async (tableName) => {
+    try {
+      const result = await axios(`https://insanity-api.onrender.com/api/fetch/${tableName}`);
+      setData(result.data);
+      setError(null);
+    } catch (error) {
+      console.error("Error fetching data:", error.message);
+      setError("Error fetching data. Please try again.");
+    }
+  };
 
   const handleAdd = async () => {
     try {
-      // Validate input
-      if (!newData.nome || !newData.resultado || isNaN(newData.resultado) || newData.resultado < 0) {
+      if (!selectedTable || !newData.nome || !newData.resultado || isNaN(newData.resultado) || newData.resultado < 0) {
         setError("Introduza um nome/resultado válido!");
         return;
       }
 
-      // Make a POST request to the server with the data to be inserted
-      const response = await axios.post('https://insanity-api.onrender.com/api/insert/TouroMecanico', newData);
+      const response = await axios.post(`https://insanity-api.onrender.com/api/insert/${selectedTable}`, newData);
 
-      // Handle the response as needed
-      console.log(response.data);
-      setAddFormVisible(false); // Close the form after successful insertion
+      setAddFormVisible(false);
       const updatedData = [...data, response.data];
       setData(updatedData);
-      setError(null); // Clear any previous errors
+      setError(null);
+      setNewData({
+        nome: "",
+        resultado: "",
+      });
+      fetchData(selectedTable);
     } catch (error) {
       console.error("Error inserting data:", error.message);
-      setError("Error inserting data. Please try again."); // Set error state for display
-    }
-  };
-
-  const handleRemove = async () => {
-    try {
-      // Your logic to add data
-      // Example: const response = await axios.post('your-api-endpoint', newData);
-      // Update the data state accordingly
-      // setData([...data, response.data]);
-    } catch (error) {
-      console.error('Error adding data:', error);
+      setError("Error inserting data. Please try again.");
     }
   };
 
@@ -96,16 +97,22 @@ function App() {
   // Using useEffect to call the API once mounted and set the data
   useEffect(() => {
     (async () => {
-      const result = await axios("https://insanity-api.onrender.com/api/fetch/TouroMecanico");
-      setData(result.data);
+      fetchData("TouroMecanico");
+      //fetchData("Boxe");
+      const resultTables = await axios("https://insanity-api.onrender.com/api/tables");
+      setTables(resultTables.data.tables);
     })();
-  }, []);
+  }, [selectedTable]);
+
+  const handleTableChange = (e) => {
+    setSelectedTable(e.target.value);
+  };
 
 
 
   return (
     <div className="App">
-      {data.length === 1 ? (
+      {data.length === 0 ? (
         <div className="loading-container">
           <p className="loading-text">
             Se está preso, culpem a merda do Render. Aguardar um pouco!
@@ -123,13 +130,18 @@ function App() {
             <button className="add-button" onClick={handleAddClick}>
               Adicionar
             </button>
-            <button className="remove-button" onClick={handleRemove}>
-              Remover
-            </button>
           </div>
 
           {isAddFormVisible && (
             <div className="add-form">
+
+              <select onChange={handleTableChange} value={selectedTable}>
+                <option value="" disabled>Tabela</option>
+                {tables.map(table => (
+                  <option key={table} value={table}>{table}</option>
+                ))}
+              </select>
+
               <input
                 type="text"
                 placeholder="Nome"
