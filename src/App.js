@@ -1,7 +1,7 @@
 import './App.css';
 import axios from "axios";
 import Table from "./tabela";
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState, useEffect, useCallback } from "react";
 import loadingImage from './assets/waiting.gif';
 
 const App = () => {
@@ -118,15 +118,14 @@ const App = () => {
   };
 
 
-  const rotateTableData = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % (tables.length + 1)); // Including images
+  const rotateTableData = useCallback(() => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % (tables.length + 1));
 
     if (currentIndex < tables.length) {
-      // If the current index is within the table range
       const nextTableName = tables[(currentIndex + 1) % tables.length];
       handleDynamicHeaderChange(nextTableName);
     }
-  };
+  }, [currentIndex, tables]);
   // useEffect for initial data fetching
   useEffect(() => {
 
@@ -150,8 +149,7 @@ const App = () => {
     }, 5000);
 
     return () => clearInterval(intervalId);
-
-  }, [currentIndex, tables]);
+  }, [rotateTableData]);
 
   const handleImageUpload = (files) => {
     const uploadedImages = [];
@@ -195,7 +193,7 @@ const App = () => {
             // Render an image if the current index is for images
             <div>
               {images.map((imageUrl, index) => (
-                <img key={index} src={imageUrl} alt={`Image ${index}`} className="image-class" />
+                <img key={index} src={imageUrl} alt={`Imagem ${index}`} className="image-class" />
               ))}
             </div>
           )}
@@ -234,6 +232,12 @@ const App = () => {
           <button className="confirm-button" onClick={handleAdd}>
             Confirmar
           </button>
+
+          {error && (
+            <div className="error-container">
+              <p className="error-text">{error}</p>
+            </div>
+          )}
 
           <div className="drop-area" onDrop={handleDrop} onDragOver={(e) => e.preventDefault()} />
         </div>
