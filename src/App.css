@@ -10,18 +10,19 @@ html {
 
 /* Styling for the main container */
 .App {
-  display: flex;
   flex-direction: column;
   height: 100%;
   align-items: center;
-  text-align: center;
   justify-content: center;
+  text-align: center;
   background-color: #434343;
+  margin-right: 50px;
+  margin-left: 50px;
 }
 
 /* Styling for the table */
 table {
-  width: 90%;
+  width: 100%;
   border-collapse: collapse;
   border: 1px solid #525252;
 }
@@ -213,4 +214,10 @@ th {
 .confirm-button:hover {
   background-color: #2980b9;
   /* Change the background color on hover as needed */
+}
+
+.drop-area {
+  border: 2px dashed #ccc;
+  padding: 20px;
+  margin: 10px;
 }
