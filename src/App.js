@@ -28,7 +28,7 @@ const App = () => {
             Header: "Nome",
             accessor: "nome",
             Cell: ({ row }) => (
-              <span style={{ fontSize: `${row.index < 3 ? 29 - row.index : 24}px` }}>
+              <span style={{ fontSize: `${row.index < 3 ? 34 - row.index : 28}px`, fontWeight: "bold" }}>
                 {row.original.nome}
               </span>
             ),
@@ -37,7 +37,7 @@ const App = () => {
             Header: "Resultado",
             accessor: "resultado",
             Cell: ({ row }) => (
-              <span style={{ fontSize: `${row.index < 3 ? 29 - row.index : 24}px`, fontWeight: "bold" }}>
+              <span style={{ fontSize: `${row.index < 3 ? 34 - row.index : 28}px`, fontWeight: "bold" }}>
                 {row.original.resultado}
               </span>
             ),

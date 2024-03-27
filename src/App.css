@@ -1,11 +1,23 @@
 /* App.css */
 
 /* Ensure that the body and HTML take up the full height */
+
+@font-face {
+  font-family: 'Komix';
+  src: url('./fonts/Komix_Eighties.ttf') format('truetype'),
+    /* Specify additional font properties if needed */
+}
+
 body,
 html {
+  font-family: 'Komix';
   height: 100%;
   margin: 0;
-  background-color: #434343;
+  margin: 0;
+  background-image: url("./assets/fundo.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 /* Styling for the main container */
@@ -15,7 +27,6 @@ html {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: #434343;
   margin-right: 50px;
   margin-left: 50px;
 }
@@ -24,13 +35,13 @@ html {
 table {
   width: 100%;
   border-collapse: collapse;
-  border: 1px solid #525252;
+  border: 1px solid #ffffff;
 }
 
 td {
   text-align: center;
   vertical-align: middle;
-  color: #e7e6e6;
+  color: #ffffff;
   padding: 10px;
 }
 
@@ -45,15 +56,14 @@ td:nth-child(2) {
 
 /* Styling for rows */
 tr {
-  border-bottom: 1px solid #525252;
+  border: 4.2px solid #ffffff;
   transition: background-color 0.3s ease;
-  background-color: #434343;
+  background-color: rgba(14, 14, 14, 0.8);
 
 }
 
 /* Styling for the first three rows */
 tr.special td {
-  background-color: #3f3f3f;
   color: #ffffff;
   /* Adjust the color as needed */
 }
@@ -72,7 +82,7 @@ th {
   /* Added background size */
   animation: rainbowAnimation 10s linear infinite;
   padding: 10px;
-  font-size: 32px;
+  font-size: 40px;
   /* Adjust the font size as needed */
 }
 
