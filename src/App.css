@@ -35,8 +35,11 @@ html {
 table {
   width: 100%;
   border-collapse: collapse;
-  border: 1px solid #ffffff;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  overflow: hidden;
 }
+
 
 td {
   text-align: center;
@@ -56,15 +59,19 @@ td:nth-child(2) {
 
 /* Styling for rows */
 tr {
-  border: 4.2px solid #ffffff;
+  border: 4.2px solid #d5d5d5;
   transition: background-color 0.3s ease;
   background-color: rgba(14, 14, 14, 0.8);
+  text-shadow: 0 0 10px #5a5a5a, 0 0 20px #5a5a5a, 0 0 30px #5a5a5a;
 
 }
 
 /* Styling for the first three rows */
 tr.special td {
   color: #ffffff;
+  /* Neon color */
+  text-shadow: 0 0 10px #808080, 0 0 20px #808080, 0 0 30px #808080;
+
   /* Adjust the color as needed */
 }
 
@@ -74,32 +81,18 @@ tr:hover {
 }
 
 /* Styling for header row */
+
 th {
-  background: linear-gradient(to right, red, orange, yellow, rgb(0, 255, 0), blue, rgb(149, 0, 255), rgb(255, 0, 255));
   -webkit-background-clip: text;
-  color: transparent;
+  color: #dd241f;
+  /* Neon color */
+  text-shadow: 0 0 10px #951410, 0 0 20px #951410, 0 0 30px #951410, 0 0 40px #951410, 0 0 70px #951410, 0 0 80px #951410, 0 0 100px #951410, 0 0 150px #951410;
+  font-size: 40px;
   background-size: 200%;
   /* Added background size */
-  animation: rainbowAnimation 10s linear infinite;
   padding: 10px;
   font-size: 40px;
   /* Adjust the font size as needed */
-}
-
-
-
-@keyframes rainbowAnimation {
-  0% {
-    background-position: 200%;
-  }
-
-  50% {
-    background-position: 0%;
-  }
-
-  100% {
-    background-position: 200%;
-  }
 }
 
 .button-container {
