@@ -35,7 +35,7 @@ html {
 table {
   width: 100%;
   border-collapse: collapse;
-  border: 2px solid transparent;
+  box-shadow: 0 0 10px #424242, 0 0 20px #424242, 0 0 30px #424242;
   border-radius: 4px;
   overflow: hidden;
 }
