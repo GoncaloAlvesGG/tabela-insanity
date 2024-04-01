@@ -198,10 +198,9 @@ const App = () => {
             currentIndex >= tables.length && (
               <div>
                 <img
-                  src={"https://drive.usercontent.google.com/download?id=" + images[currentImageIndex].id}
+                  src={"https://drive.google.com/thumbnail?id=" + images[currentImageIndex].id + "&sz=w1000"}
                   alt={`Imagem ${currentImageIndex}`}
-                  className="image-class"
-                />
+                  className="image-class" />
               </div>
             )
           )}
