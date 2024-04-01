@@ -91,8 +91,8 @@ th {
   background-size: 200%;
   /* Added background size */
   padding: 10px;
-  font-size: 40px;
-  /* Adjust the font size as needed */
+  text-align: center;
+  /* Center the text */
 }
 
 .button-container {
