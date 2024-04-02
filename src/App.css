@@ -169,9 +169,8 @@ th {
 
 .add-form {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
   background-color: #555;
   padding: 10px;
   border-radius: 8px;
@@ -181,17 +180,16 @@ th {
 
 .add-form input {
   padding: 5px;
-  margin: 0 10px;
+  margin: 10px 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
   box-sizing: border-box;
-  flex: 1;
   /* Take up remaining space in the row */
 }
 
 .add-form select {
   padding: 5px;
-  margin: 0 10px;
+  margin: 10px 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
   box-sizing: border-box;
@@ -203,7 +201,7 @@ th {
 .confirm-button {
   padding: 10px 15px;
   font-size: 16px;
-  margin: 0 10px;
+  margin: 10px 10px;
   background-color: #3498db;
   /* Blue background color */
   color: #fff;
