@@ -11,7 +11,7 @@
 body,
 html {
   font-family: 'Komix';
-  height: 102%;
+  height: 100%;
   margin: 0;
   margin: 0;
   background-image: url("./assets/fundo.jpg");
@@ -23,13 +23,13 @@ html {
 /* Styling for the main container */
 .App {
   flex-direction: column;
-  padding: 10px;
-  height: 95vh;
+  height: 95%;
   align-items: center;
   justify-content: center;
   text-align: center;
   margin-right: 50px;
   margin-left: 50px;
+  padding: 10px;
 }
 
 /* Styling for the table */
@@ -221,7 +221,6 @@ th {
 }
 
 .image-class {
-  padding: 20px;
   height: 95vh;
   /* 100% of the viewport height */
   overflow: hidden;
