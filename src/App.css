@@ -38,6 +38,7 @@ table {
   box-shadow: 0 0 10px #424242, 0 0 20px #424242, 0 0 30px #424242;
   border-radius: 4px;
   overflow: hidden;
+  table-layout: fixed;
 }
 
 
@@ -46,6 +47,7 @@ td {
   vertical-align: middle;
   color: #ffffff;
   padding: 10px;
+  width: 50%;
 }
 
 td:nth-child(2) {

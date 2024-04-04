@@ -11,7 +11,7 @@ const Home = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [selectedTable, setSelectedTable] = useState('');
-    const [dynamicHeader, setDynamicHeader] = useState("Titulo");
+    const [dynamicHeader, setDynamicHeader] = useState("501"); //Garantir que este valor é o primeiro obtido da tabela
 
     const columns = useMemo(
         () => [
